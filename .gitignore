@@ -1,0 +1,137 @@
+.env
+private.rar
+
+# Front - End
+#-------------------------
+# Operating Specific Junk Files
+#-------------------------
+web-app/public/assets
+web-app/public/backup
+web-app/public/img
+web-app/public/sticker
+web-app/public/template
+web-app/public/template2
+web-app/public/templatelogin
+web-app/public/img.zip
+# OS X
+web-app/.DS_Store
+web-app/.AppleDouble
+web-app/.LSOverride
+
+# OS X Thumbnails
+web-app/._*
+
+# Windows image file caches
+web-app/Thumbs.db
+web-app/ehthumbs.db
+web-app/Desktop.ini
+
+# Recycle Bin used on file shares
+web-app/$RECYCLE.BIN/
+
+# Windows Installer files
+web-app/*.cab
+web-app/*.msi
+web-app/*.msm
+web-app/*.msp
+
+# Windows shortcuts
+web-app/*.lnk
+
+# Linux
+web-app/*~
+
+# KDE directory preferences
+web-app/.directory
+
+# Linux trash folder which might appear on any partition or disk
+web-app/.Trash-*
+
+#-------------------------
+# Environment Files
+#-------------------------
+# These should never be under version control,
+# as it poses a security risk.
+web-app/.env
+web-app/.vagrant
+web-app/Vagrantfile
+
+#-------------------------
+# Temporary Files
+#-------------------------
+web-app/writable/cache/*
+web-app/!writable/cache/index.html
+
+web-app/writable/logs/*
+web-app/!writable/logs/index.html
+
+web-app/writable/session/*
+web-app/!writable/session/index.html
+
+web-app/writable/uploads/*
+web-app/!writable/uploads/index.html
+
+web-app/writable/debugbar/*
+web-app/!writable/debugbar/.gitkeep
+
+web-app/php_errors.log
+
+#-------------------------
+# User Guide Temp Files
+#-------------------------
+web-app/user_guide_src/build/*
+web-app/user_guide_src/cilexer/build/*
+web-app/user_guide_src/cilexer/dist/*
+web-app/user_guide_src/cilexer/pycilexer.egg-info/*
+
+#-------------------------
+# Test Files
+#-------------------------
+web-app/tests/coverage*
+
+# Don't save phpunit under version control.
+web-app/phpunit
+
+#-------------------------
+# Composer
+#-------------------------
+web-app/vendor/
+
+#-------------------------
+# IDE / Development Files
+#-------------------------
+
+# Modules Testing
+web-app/_modules/*
+
+# phpenv local config
+web-app/.php-version
+
+# Jetbrains editors (PHPStorm, etc)
+web-app/.idea/
+web-app/*.iml
+
+# Netbeans
+web-app/nbproject/
+web-app/build/
+web-app/nbbuild/
+web-app/dist/
+web-app/nbdist/
+web-app/nbactions.xml
+web-app/nb-configuration.xml
+web-app/.nb-gradle/
+
+# Sublime Text
+web-app/*.tmlanguage.cache
+web-app/*.tmPreferences.cache
+web-app/*.stTheme.cache
+web-app/*.sublime-workspace
+web-app/*.sublime-project
+web-app/.phpintel
+web-app/api/
+
+# Visual Studio Code
+web-app/.vscode/
+
+web-app/results/
+web-app/phpunit*.xml

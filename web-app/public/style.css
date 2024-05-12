@@ -1,0 +1,32 @@
+body.pc {
+  background-image: url("img/HADE\ 2.jpg");
+  background-size: 100% 100%;
+  background-position: middle;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 2px solid;
+}
+body.mb {
+  background-image: url("img/HADE.jpg");
+  background-size: 100% 100%;
+  background-position: middle;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 2px solid;
+}
+.centered {
+  position: fixed;
+  min-width: 300px;
+  top: 52%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}
+.bg-pc {
+  background-image: url("img/HADE.jpg");
+  background-size: 100% 100%;
+  background-position: middle;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 2px solid;
+}
