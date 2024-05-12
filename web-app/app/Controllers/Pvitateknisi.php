@@ -214,8 +214,7 @@ class Pvitateknisi extends BaseController
             ),
         );
         $encodedMarkup = json_encode($replyMarkup);
-        // $token = "5447674086:AAH_ZGCUapAeYgMJRy0d1TS24Oi8AUPrg4o"; // token bot Sample BOT
-        $token = "5427617081:AAEtLWUlWlHD_g5Z95GOLurb16iBC4e_5Xg"; // token bot
+        $token = "token_bot"; // token bot
         $dataT = [
             'text' => $pesan,
             'chat_id' => $this->request->getPost('teknisiDispatch'), //contoh bot, group id -442697126
