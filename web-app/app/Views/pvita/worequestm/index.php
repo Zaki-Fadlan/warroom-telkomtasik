@@ -34,7 +34,7 @@
                           scrollX: true,
                           scrollCollapse: true,
                           responsive: true,
-                          ajax: '<?php echo ('PvitaReqM/ajaxDataTableRequest'); ?>',
+                          ajax: '<?php echo ('pvitareqm/ajaxDataTableRequest'); ?>',
                       });
                   });
               </script>
