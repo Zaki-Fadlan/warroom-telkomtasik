@@ -76,7 +76,7 @@
       function validasi(id) {
           $.ajax({
               type: "POST",
-              url: "<?php echo base_url('/PvitaReqM/viewEditVal'); ?>",
+              url: "<?php echo base_url('/pvitareqm/viewEditVal'); ?>",
               data: {
                   id_request: id
               },
@@ -117,7 +117,7 @@
           } else {
               $.ajax({
                   type: "POST",
-                  url: "/PvitaReqM/ajaxDataTableRequestFilter",
+                  url: "/pvitareqm/ajaxDataTableRequestFilter",
                   data: data,
                   cache: false,
                   beforeSend: function(f) {

@@ -88,7 +88,7 @@
             }
             $.ajax({
                 type: "POST",
-                url: "/PvitaReqM/acc",
+                url: "/pvitareqm/acc",
                 data: data,
                 cache: false,
                 success: function(response) {
@@ -107,7 +107,7 @@
                         scrollX: true,
                         scrollCollapse: true,
                         responsive: true,
-                        ajax: '<?php echo base_url('PvitaReqM/ajaxDataTableRequest'); ?>'
+                        ajax: '<?php echo base_url('pvitareqm/ajaxDataTableRequest'); ?>'
                     })
                     console.log(response)
 
@@ -133,7 +133,7 @@
             }
             $.ajax({
                 type: "POST",
-                url: "/PvitaReqM/rej",
+                url: "/pvitareqm/rej",
                 data: data,
                 cache: false,
                 success: function(response) {
@@ -153,7 +153,7 @@
                         scrollX: true,
                         scrollCollapse: true,
                         responsive: true,
-                        ajax: '<?php echo base_url('PvitaReqM/ajaxDataTableRequest'); ?>'
+                        ajax: '<?php echo base_url('pvitareqm/ajaxDataTableRequest'); ?>'
                     })
                     if (response == "\"200\"") {
                         Toast.fire({
