@@ -1,8 +1,11 @@
 # CI_ENVIRONMENT = production
 CI_ENVIRONMENT = development
+BASE_URL = http://localhost:8080/
 
 database.default.hostname =
 database.default.database =
 database.default.username =
 database.default.password =
-database.default.port = 3306
+database.default.port =
+database.default.DBDriver = MySQLi
+database.default.DBPrefix =
