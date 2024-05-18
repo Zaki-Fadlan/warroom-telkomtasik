@@ -6,11 +6,13 @@ use App\Models\ModelSto;
 use App\Models\ModelDatel;
 use App\Models\ModelAllWo;
 use App\Models\ModelTeknisi;
+use Dotenv\Dotenv;
 
 
 
 class Pvitascbe extends BaseController
 {
+    protected $botToken;
     public function index()
     {
         $data = [
@@ -25,6 +27,10 @@ class Pvitascbe extends BaseController
     }
     public function __construct()
     {
+        $dotenv = Dotenv::createImmutable(ROOTPATH);
+        $dotenv->load();
+        $this->botToken = getenv('BOT_TECHNICIAN_TOKEN');
+
         helper('form');
         $this->ModelSto = new ModelSto();
         $this->ModelDatel = new ModelDatel();
@@ -149,13 +155,12 @@ class Pvitascbe extends BaseController
             ),
         );
         $encodedMarkup = json_encode($replyMarkup);
-        $token = "isi token"; // token bot
         $dataT = [
             'text' => $pesan,
             'chat_id' => $this->request->getPost('teknisiDispatch'), //contoh bot, group id -442697126
             'reply_markup' => $encodedMarkup,
         ];
-        file_get_contents("https://api.telegram.org/bot$token/sendMessage?" . http_build_query($dataT));
+        file_get_contents("https://api.telegram.org/bot" . $this->botToken . "/sendMessage?" . http_build_query($dataT));
         return json_encode("200");
     }
     public function ajaxDataTableScbeFilter()
