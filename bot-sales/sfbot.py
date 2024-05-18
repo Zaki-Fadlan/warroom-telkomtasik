@@ -5,16 +5,15 @@ import sflibrary
 from telegram import Update
 from telegram.ext import filters, MessageHandler, ApplicationBuilder, CommandHandler, ContextTypes, CallbackContext, CallbackQueryHandler
 from asyncio.windows_events import NULL
-
-
+from dotenv import load_dotenv
+import os
 import re
-
-
 from telegram import KeyboardButton, ReplyKeyboardMarkup, ReplyKeyboardRemove, __version__ as TG_VER
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from datetime import datetime
-
 from datetime import datetime
+
+BOT_TOKEN = os.getenv("TOKEN_BOT_SALES")
 now = datetime.now()
 sekarang = now.strftime("%d-%m-%Y %H:%M:%S")
 print('Bot Started at : ' + sekarang)
@@ -290,7 +289,7 @@ async def jawaban(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 if __name__ == '__main__':
 
-    application = ApplicationBuilder().token('TOKEN').build()
+    application = ApplicationBuilder().token(BOT_TOKEN).build()
     echo_handler = MessageHandler(filters.TEXT & (~filters.COMMAND), echo)
     location_handler = MessageHandler(filters.LOCATION, location)
     start_handler = CommandHandler('start', start)

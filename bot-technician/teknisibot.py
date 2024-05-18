@@ -4,7 +4,8 @@ from tabnanny import check
 from turtle import up
 from operator import index
 import libteknisi
-
+from dotenv import load_dotenv
+import os
 from telegram import KeyboardButton, ReplyKeyboardMarkup, ReplyKeyboardRemove, __version__ as TG_VER
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from datetime import datetime
@@ -12,7 +13,7 @@ from datetime import datetime
 import re
 now = datetime.now()
 sekarang = now.strftime("%d-%m-%Y %H:%M:%S")
-
+BOT_TOKEN = os.getenv("TOKEN_BOT_TECHNICIAN")
 
 kbproses = [[KeyboardButton("BISA DITARIK PT1")], [KeyboardButton("KENDALA")], [
     KeyboardButton("WO MANJA")]]
@@ -322,8 +323,7 @@ async def jawaban(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 if __name__ == '__main__':
     print("Bot Started")
 
-    application = ApplicationBuilder().token(
-        'Token').build()
+    application = ApplicationBuilder().token(BOT_TOKEN).build()
     echo_handler = MessageHandler(filters.TEXT & (~filters.COMMAND), echo)
     location_handler = MessageHandler(filters.LOCATION, location)
 
