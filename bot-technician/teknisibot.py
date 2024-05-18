@@ -13,7 +13,7 @@ from datetime import datetime
 import re
 now = datetime.now()
 sekarang = now.strftime("%d-%m-%Y %H:%M:%S")
-BOT_TOKEN = os.getenv("TOKEN_BOT_TECHNICIAN")
+BOT_TOKEN = os.getenv("TOKEN_BOT_TECHNICIAN_DEV")
 
 kbproses = [[KeyboardButton("BISA DITARIK PT1")], [KeyboardButton("KENDALA")], [
     KeyboardButton("WO MANJA")]]

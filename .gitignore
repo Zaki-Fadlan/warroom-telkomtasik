@@ -1,4 +1,4 @@
-.env
+/web-app/.env
 /bot-sales/.env
 /bot-technician/.env
 private.rar

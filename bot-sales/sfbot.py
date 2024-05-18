@@ -13,7 +13,7 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from datetime import datetime
 from datetime import datetime
 
-BOT_TOKEN = os.getenv("TOKEN_BOT_SALES")
+BOT_TOKEN = os.getenv("TOKEN_BOT_SALES_DEV")
 now = datetime.now()
 sekarang = now.strftime("%d-%m-%Y %H:%M:%S")
 print('Bot Started at : ' + sekarang)

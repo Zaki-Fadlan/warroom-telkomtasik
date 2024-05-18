@@ -1,0 +1,8 @@
+# CI_ENVIRONMENT = production
+CI_ENVIRONMENT = development
+
+database.default.hostname =
+database.default.database =
+database.default.username =
+database.default.password =
+database.default.port = 3306
