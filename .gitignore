@@ -1,6 +1,8 @@
 /web-app/.env
 /bot-sales/.env
 /bot-technician/.env
+/bot-sales/__pycache__
+/bot-technician/__pycache__
 private.rar
 /private
 

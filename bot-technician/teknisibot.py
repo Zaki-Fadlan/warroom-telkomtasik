@@ -1,3 +1,4 @@
+import re
 from telegram import Update
 from telegram.ext import filters, MessageHandler, ApplicationBuilder, CommandHandler, ContextTypes, CallbackContext, CallbackQueryHandler
 from tabnanny import check
@@ -9,12 +10,10 @@ import os
 from telegram import KeyboardButton, ReplyKeyboardMarkup, ReplyKeyboardRemove, __version__ as TG_VER
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from datetime import datetime
-
-import re
+load_dotenv()
 now = datetime.now()
 sekarang = now.strftime("%d-%m-%Y %H:%M:%S")
 BOT_TOKEN = os.getenv("TOKEN_BOT_TECHNICIAN_DEV")
-
 kbproses = [[KeyboardButton("BISA DITARIK PT1")], [KeyboardButton("KENDALA")], [
     KeyboardButton("WO MANJA")]]
 kbmenu = [[KeyboardButton("PROSES WO")], [KeyboardButton("LISTWO")]]

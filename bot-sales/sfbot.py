@@ -12,6 +12,7 @@ from telegram import KeyboardButton, ReplyKeyboardMarkup, ReplyKeyboardRemove, _
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from datetime import datetime
 from datetime import datetime
+load_dotenv()
 
 BOT_TOKEN = os.getenv("TOKEN_BOT_SALES_DEV")
 now = datetime.now()
