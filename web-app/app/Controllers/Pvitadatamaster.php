@@ -14,6 +14,7 @@ use App\Models\ModelDatelSt;
 use App\Models\ModelStoSt;
 use App\Models\ModelUserSt;
 use App\Models\ModelKecepatan;
+use App\Models\ModelKendala;
 
 // use PhpMyAdmin\Server\Status\Data;
 
@@ -44,6 +45,75 @@ class Pvitadatamaster extends BaseController
         $this->ModelDatelSt = new ModelDatelSt();
         $this->ModelStoSt = new ModelStoSt();
         $this->ModelUserSt = new ModelUserSt();
+        $this->ModelKendala = new ModelKendala();
+    }
+    // Fungsi Kendala
+    public function viewModalKendala()
+    {
+        return view('pvita/datamaster/modaltambah/formkendala');
+    }
+    public function viewModalEditKendala()
+    {
+        $aa = $this->request->getPost('id_kendala');
+        $data =  $this->ModelKendala->dataKendala($aa);
+        $aktif =  $this->ModelDatelSt->allData();
+        $datab = [
+            "data" => $data,
+            "aktif" => $aktif,
+        ];
+        // return json_encode($data);
+        return view('pvita/datamaster/modaledit/editkendala', $datab);
+    }
+    public function insertKendala()
+    {
+        $data = [
+            'n_tipe_kendala' => strtoupper($this->request->getPost('n_tipe_kendala')),
+            'st_k'           => 1,
+        ];
+        if ($this->ModelKendala->checkKendala($data) == 0) {
+            $this->ModelKendala->tambahKendala($data);
+            return json_encode("200");
+        } else {
+            return json_encode("gagal");
+        }
+    }
+    public function updateKendalaData()
+    {
+        $data = [
+            'id_kendala'         => $this->request->getPost('id_kendala'),
+            'n_tipe_kendala'         => strtoupper($this->request->getPost('n_tipe_kendala')),
+            'st_k'         => strtoupper($this->request->getPost('st_k')),
+        ];
+        $datab = $this->ModelKendala->validasiNamaKendala($data);
+        $ss = "";
+        foreach ($datab as $key) {
+            $ss .= $key['id_kendala'];
+        }
+        if ((int)$ss == $data['id_kendala'] or $datab == []) {
+            $this->ModelKendala->updateKendala($data);
+            return json_encode("200");
+        } else {
+            return "Gagal";
+        }
+    }
+    public function ajaxDataTableKendala()
+    {
+        $data['kendala'] =  $this->ModelKendala->allData();
+        $dataKendala = [];
+        $no = 0;
+        foreach ($data['kendala'] as $temp) {
+            $no++;
+            $aksi = '<button type="button" class="btn btn-sm btn-warning" data-toggle="modal" onclick="editKendala(' . $temp['id_kendala'] . ')" data-target="#modalView"><i class="fa-solid fa-pen"></i> Edit</button>';
+            $row = [];
+            $row[] = $no;
+            $row[] = $temp['n_tipe_kendala'];
+            $row[] = $temp['n_st_dm_datel'];
+            $row[] = $aksi;
+            $dataKendala[] = $row;
+        }
+        $result['data'] = $dataKendala;
+        echo json_encode($result);
+        exit();
     }
     // Fungsi Kecepatan
     public function viewModalKecepatan()
@@ -62,6 +132,7 @@ class Pvitadatamaster extends BaseController
         // return json_encode($data);
         return view('pvita/datamaster/modaledit/editkecepatan', $datab);
     }
+
     public function insertKecepatan()
     {
         $data = [

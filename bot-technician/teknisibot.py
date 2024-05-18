@@ -323,7 +323,7 @@ if __name__ == '__main__':
     print("Bot Started")
 
     application = ApplicationBuilder().token(
-        'TOKEN').build()
+        'Token').build()
     echo_handler = MessageHandler(filters.TEXT & (~filters.COMMAND), echo)
     location_handler = MessageHandler(filters.LOCATION, location)
 

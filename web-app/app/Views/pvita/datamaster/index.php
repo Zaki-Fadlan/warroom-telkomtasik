@@ -39,7 +39,7 @@
                             <script>
                                 $(document).ready(function() {
                                     $('#tabelUser').DataTable({
-                                        ajax: '<?php echo ('PvitaDatamaster/ajaxDataTableUser'); ?>',
+                                        ajax: '<?php echo ('pvitadatamaster/ajaxDataTableUser'); ?>',
                                     });
                                 });
                             </script>
@@ -90,7 +90,7 @@
                             <script>
                                 $(document).ready(function() {
                                     $('#tabelSales').DataTable({
-                                        ajax: '<?php echo base_url('PvitaDatamaster/ajaxDataTableSales'); ?>',
+                                        ajax: '<?php echo base_url('pvitadatamaster/ajaxDataTableSales'); ?>',
                                     });
                                 });
                             </script>
@@ -144,7 +144,7 @@
                             <script>
                                 $(document).ready(function() {
                                     $('#tabelTeknisi').DataTable({
-                                        ajax: '<?php echo base_url('PvitaDatamaster/ajaxDataTableTeknisi'); ?>',
+                                        ajax: '<?php echo base_url('pvitadatamaster/ajaxDataTableTeknisi'); ?>',
                                     });
                                 });
                             </script>
@@ -190,7 +190,7 @@
                             <script>
                                 $(document).ready(function() {
                                     $('#tabelDatel').DataTable({
-                                        ajax: '<?php echo base_url('PvitaDatamaster/ajaxDataTableDatel'); ?>',
+                                        ajax: '<?php echo base_url('pvitadatamaster/ajaxDataTableDatel'); ?>',
                                     });
                                 });
                             </script>
@@ -236,7 +236,7 @@
                             <script>
                                 $(document).ready(function() {
                                     $('#tabelSto').DataTable({
-                                        ajax: '<?php echo base_url('PvitaDatamaster/ajaxDataTableSto'); ?>',
+                                        ajax: '<?php echo base_url('pvitadatamaster/ajaxDataTableSto'); ?>',
                                     });
                                 });
                             </script>
@@ -279,7 +279,7 @@
                             <script>
                                 $(document).ready(function() {
                                     $('#tabelLayanan').DataTable({
-                                        ajax: '<?php echo base_url('PvitaDatamaster/ajaxDataTableLayanan'); ?>',
+                                        ajax: '<?php echo base_url('pvitadatamaster/ajaxDataTableLayanan'); ?>',
                                     });
                                 });
                             </script>
@@ -322,7 +322,7 @@
                             <script>
                                 $(document).ready(function() {
                                     $('#tabelKecepatan').DataTable({
-                                        ajax: '<?php echo base_url('PvitaDatamaster/ajaxDataTableKecepatan'); ?>',
+                                        ajax: '<?php echo base_url('pvitadatamaster/ajaxDataTableKecepatan'); ?>',
                                     });
                                 });
                             </script>
@@ -332,7 +332,49 @@
             </div>
         </div>
     </div>
-
+    <div class="col-lg-12">
+        <div class="card card-danger collapsed-card">
+            <div class="card-header"><i class="fa-solid fa-city"></i> Datamaster <b>Kendala</b>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body data-sto">
+                <div class="box box-danger ">
+                    <div class="box-body">
+                        <button type="button" onclick="tambahKendala()" class="btn btn-success" data-toggle="modal" data-target="#modalView"><i class="fa fa-fw fa-plus"></i>
+                            Tambah Kendala
+                        </button>
+                        <div class="card-body">
+                            <div class="notif-sto"></div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped w-100 text-center" id="tabelKendala">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center align-middle">No</th>
+                                            <th class="text-center align-middle">Kendala</th>
+                                            <th class="text-center align-middle">Status</th>
+                                            <th class="text-center align-middle">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <script>
+                                $(document).ready(function() {
+                                    $('#tabelKendala').DataTable({
+                                        ajax: '<?php echo base_url('pvitadatamaster/ajaxDataTableKendala'); ?>',
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Modal Tambah -->
     <div class="modal fade" id="modalView">
@@ -347,9 +389,37 @@
 
 
 <script>
+    function tambahKendala() {
+        $.ajax({
+            url: "<?php echo base_url('/pvitadatamaster/viewModalKendala'); ?>",
+            beforeSend: function(f) {
+                $("#formModal").html('<div class="d-flex justify-content-center m-5"><div class="spinner-border text-danger " style="width: 6rem; height: 6rem;" role="status"><span class="sr-only">Loading . . .</span></div></div>');
+            },
+            success: function(data) {
+                $("#formModal").html(data);
+            }
+        });
+    }
+
+    function editKendala(id) {
+        $.ajax({
+            type: "POST",
+            url: "<?php echo base_url('/pvitadatamaster/viewModalEditKendala/'); ?>",
+            data: {
+                id_kendala: id
+            },
+            beforeSend: function(f) {
+                $("#formModal").html('<div class="d-flex justify-content-center m-5"><div class="spinner-border text-danger " style="width: 6rem; height: 6rem;" role="status"><span class="sr-only">Loading . . .</span></div></div>');
+            },
+            success: function(data) {
+                $("#formModal").html(data);
+            }
+        });
+    }
+
     function tambahKecepatan() {
         $.ajax({
-            url: "<?php echo base_url('/PvitaDatamaster/viewModalKecepatan'); ?>",
+            url: "<?php echo base_url('/pvitadatamaster/viewModalKecepatan'); ?>",
             beforeSend: function(f) {
                 $("#formModal").html('<div class="d-flex justify-content-center m-5"><div class="spinner-border text-danger " style="width: 6rem; height: 6rem;" role="status"><span class="sr-only">Loading . . .</span></div></div>');
             },
@@ -362,7 +432,7 @@
     function editKecepatan(id) {
         $.ajax({
             type: "POST",
-            url: "<?php echo base_url('/PvitaDatamaster/viewModalEditKecepatan/'); ?>",
+            url: "<?php echo base_url('/pvitadatamaster/viewModalEditKecepatan/'); ?>",
             data: {
                 id_kecepatan: id
             },
@@ -378,7 +448,7 @@
 
     function tambahLayanan() {
         $.ajax({
-            url: "<?php echo base_url('/PvitaDatamaster/viewModalLayanan'); ?>",
+            url: "<?php echo base_url('/pvitadatamaster/viewModalLayanan'); ?>",
             beforeSend: function(f) {
                 $("#formModal").html('<div class="d-flex justify-content-center m-5"><div class="spinner-border text-danger " style="width: 6rem; height: 6rem;" role="status"><span class="sr-only">Loading . . .</span></div></div>');
             },
@@ -391,7 +461,7 @@
     function editLayanan(id) {
         $.ajax({
             type: "POST",
-            url: "<?php echo base_url('/PvitaDatamaster/viewModalEditLayanan/'); ?>",
+            url: "<?php echo base_url('/pvitadatamaster/viewModalEditLayanan/'); ?>",
             data: {
                 id_layanan: id
             },
@@ -407,7 +477,7 @@
 
     function tambahUser() {
         $.ajax({
-            url: "<?php echo base_url('/PvitaDatamaster/viewModalUser'); ?>",
+            url: "<?php echo base_url('/pvitadatamaster/viewModalUser'); ?>",
             beforeSend: function(f) {
                 $("#formModal").html('<div class="d-flex justify-content-center m-5"><div class="spinner-border text-danger " style="width: 6rem; height: 6rem;" role="status"><span class="sr-only">Loading . . .</span></div></div>');
             },
@@ -420,7 +490,7 @@
     function editUser(id) {
         $.ajax({
             type: "POST",
-            url: "<?php echo base_url('/PvitaDatamaster/viewModalEditUser/'); ?>",
+            url: "<?php echo base_url('/pvitadatamaster/viewModalEditUser/'); ?>",
             data: {
                 id_user: id
             },
@@ -436,7 +506,7 @@
 
     function tambahDatel() {
         $.ajax({
-            url: "<?php echo base_url('/PvitaDatamaster/viewModalDatel'); ?>",
+            url: "<?php echo base_url('/pvitadatamaster/viewModalDatel'); ?>",
             beforeSend: function(f) {
                 $("#formModal").html('<div class="d-flex justify-content-center m-5"><div class="spinner-border text-danger " style="width: 6rem; height: 6rem;" role="status"><span class="sr-only">Loading . . .</span></div></div>');
             },
@@ -449,7 +519,7 @@
     function editDatel(id) {
         $.ajax({
             type: "POST",
-            url: "<?php echo base_url('/PvitaDatamaster/viewModalEditDatel/'); ?>",
+            url: "<?php echo base_url('/pvitadatamaster/viewModalEditDatel/'); ?>",
             data: {
                 id_datel: id
             },
@@ -465,7 +535,7 @@
 
     function tambahSto() {
         $.ajax({
-            url: "<?php echo base_url('/PvitaDatamaster/viewModalSto'); ?>",
+            url: "<?php echo base_url('/pvitadatamaster/viewModalSto'); ?>",
             beforeSend: function(f) {
                 $("#formModal").html('<div class="d-flex justify-content-center m-5"><div class="spinner-border text-danger " style="width: 6rem; height: 6rem;" role="status"><span class="sr-only">Loading . . .</span></div></div>');
             },
@@ -478,7 +548,7 @@
     function editSTO(id) {
         $.ajax({
             type: "POST",
-            url: "<?php echo base_url('/PvitaDatamaster/viewModalEditSTO/'); ?>",
+            url: "<?php echo base_url('/pvitadatamaster/viewModalEditSTO/'); ?>",
             data: {
                 id_sto: id
             },
@@ -494,7 +564,7 @@
 
     function tambahTeknisi() {
         $.ajax({
-            url: "<?php echo base_url('/PvitaDatamaster/viewModalTeknisi'); ?>",
+            url: "<?php echo base_url('/pvitadatamaster/viewModalTeknisi'); ?>",
             beforeSend: function(f) {
                 $("#formModal").html('<div class="d-flex justify-content-center m-5"><div class="spinner-border text-danger " style="width: 6rem; height: 6rem;" role="status"><span class="sr-only">Loading . . .</span></div></div>');
             },
@@ -507,7 +577,7 @@
     function editTeknisi(id) {
         $.ajax({
             type: "POST",
-            url: "<?php echo base_url('/PvitaDatamaster/viewModalEditTeknisi/'); ?>",
+            url: "<?php echo base_url('/pvitadatamaster/viewModalEditTeknisi/'); ?>",
             data: {
                 id_teknisi: id
             },
@@ -523,7 +593,7 @@
 
     function tambahSales() {
         $.ajax({
-            url: "<?php echo base_url('/PvitaDatamaster/viewModalSales'); ?>",
+            url: "<?php echo base_url('/pvitadatamaster/viewModalSales'); ?>",
             beforeSend: function(f) {
                 $("#formModal").html('<div class="d-flex justify-content-center m-5"><div class="spinner-border text-danger " style="width: 6rem; height: 6rem;" role="status"><span class="sr-only">Loading . . .</span></div></div>');
             },
@@ -537,7 +607,7 @@
     function editSales(id) {
         $.ajax({
             type: "POST",
-            url: "<?php echo base_url('/PvitaDatamaster/viewModalEditSales/'); ?>",
+            url: "<?php echo base_url('/pvitadatamaster/viewModalEditSales/'); ?>",
             data: {
                 id_sf: id
             },
